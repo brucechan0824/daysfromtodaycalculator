@@ -24,7 +24,13 @@ export default function DateCalculatorTool() {
 
   const handleCalculate = () => {
     const finalDays = days <= 0 ? 1 : days // 确保至少为1
-    const url = `/${finalDays}-days-from-today`
+    let url = `/${finalDays}-days-from-today`
+    
+    // 如果勾选了business only，添加URL参数以便自动滚动到工作日部分
+    if (isBusinessDays) {
+      url += '?scrollTo=working-days'
+    }
+    
     window.location.href = url
   }
 
@@ -51,7 +57,19 @@ export default function DateCalculatorTool() {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       e.preventDefault() // 防止表单提交
-      handleCalculate()
+      
+      // 确保先处理当前输入框的值
+      const currentValue = (e.target as HTMLInputElement).value
+      const numValue = parseInt(currentValue) || 1
+      
+      // 使用当前输入框的值而不是state中的值
+      const finalDays = numValue <= 0 ? 1 : numValue
+      let url = `/${finalDays}-days-from-today`
+      
+      if (isBusinessDays) {
+        url += '?scrollTo=working-days'
+      }
+      window.location.href = url
     }
   }
 
@@ -61,9 +79,9 @@ export default function DateCalculatorTool() {
   }
 
   return (
-    <div className="mb-6">
+    <div className="mb-8">
       {/* 计算器工具区域 - 超紧凑设计 */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 border border-gray-200 dark:border-gray-700">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700">
         <div className="flex items-center justify-center mb-4">
           <Calculator className="w-5 h-5 text-blue-600 dark:text-blue-400 mr-2" />
           <h3 className="text-lg font-bold text-gray-800 dark:text-gray-200">

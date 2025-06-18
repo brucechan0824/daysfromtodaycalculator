@@ -7,6 +7,7 @@ import DateCalculatorTool from '@/components/DateCalculatorTool'
 import MainResult from '@/components/MainResult'
 import WorkingDaysSection from '@/components/WorkingDaysSection'
 import RelatedDates from '@/components/RelatedDates'
+import AutoScrollHandler from '@/components/AutoScrollHandler'
 
 interface PageProps {
   params: {
@@ -61,6 +62,9 @@ export default async function DaysPage({ params }: PageProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 transition-colors">
       <Header />
+      
+      {/* 自动滚动处理器 */}
+      <AutoScrollHandler />
       
       <main className="container mx-auto px-6 lg:px-8 py-8 max-w-7xl">
         {/* Breadcrumb Navigation */}
