@@ -21,14 +21,6 @@ export default function RelatedDatesTable({ currentDays }: RelatedDatesTableProp
         const date = addDays(today, daysFromToday)
         const formattedDate = format(date, 'MMMM dd, yyyy')
         
-        // 生成特殊标签
-        let label = ''
-        if (offset === -2) label = format(addDays(today, currentDays - 2), 'MMMM dd, yyyy')
-        else if (offset === -1) label = 'Yesterday'
-        else if (offset === 0) label = 'Today'
-        else if (offset === 1) label = 'Tomorrow'
-        else label = format(addDays(today, daysFromToday), 'MMMM dd, yyyy')
-        
         dates.push({
           startDate: format(addDays(today, offset), 'MMMM dd, yyyy'),
           startLabel: offset === -1 ? 'Yesterday' : 

@@ -5,7 +5,7 @@ import { addDays, addBusinessDays, format } from 'date-fns'
 import { Calendar, Calculator, ArrowRight, Clock } from 'lucide-react'
 
 export default function DateCalculatorTool() {
-  const [days, setDays] = useState(1)
+  const [days, setDays] = useState(14)
   const [isBusinessDays, setIsBusinessDays] = useState(false)
   const [initialLoad, setInitialLoad] = useState(true)
 
@@ -19,63 +19,43 @@ export default function DateCalculatorTool() {
   }
 
   const targetDate = calculateTargetDate()
-  const today = new Date()
-  const dayOfWeek = format(targetDate, 'EEEE')
-
-  const handleCalculate = () => {
-    const finalDays = days <= 0 ? 1 : days // 确保至少为1
-    let url = `/${finalDays}-days-from-today`
-    
-    // 如果勾选了business only，添加URL参数以便自动滚动到工作日部分
-    if (isBusinessDays) {
-      url += '?scrollTo=working-days'
-    }
-    
-    window.location.href = url
-  }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInitialLoad(false)
     const value = e.target.value
-    
     if (value === '') {
       setDays(0)
     } else {
-      const numValue = parseInt(value)
-      if (!isNaN(numValue)) {
-        setDays(numValue)
-      }
+      const numValue = Math.max(1, Math.min(3650, parseInt(value) || 1))
+      setDays(numValue)
     }
+    setInitialLoad(false)
   }
 
-  const handleInputBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    if (days <= 0) {
+  const handleInputBlur = () => {
+    if (days === 0) {
       setDays(1)
     }
   }
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      e.preventDefault() // 防止表单提交
-      
-      // 确保先处理当前输入框的值
-      const currentValue = (e.target as HTMLInputElement).value
-      const numValue = parseInt(currentValue) || 1
-      
-      // 使用当前输入框的值而不是state中的值
-      const finalDays = numValue <= 0 ? 1 : numValue
-      let url = `/${finalDays}-days-from-today`
-      
+      handleCalculate()
+    }
+  }
+
+  const handleQuickSelect = (selectedDays: number) => {
+    setDays(selectedDays)
+    setInitialLoad(false)
+  }
+
+  const handleCalculate = () => {
+    if (days > 0) {
+      let url = `/${days}-days-from-today`
       if (isBusinessDays) {
         url += '?scrollTo=working-days'
       }
       window.location.href = url
     }
-  }
-
-  const handleQuickDayClick = (quickDay: number) => {
-    setInitialLoad(false)
-    setDays(quickDay)
   }
 
   return (
@@ -98,7 +78,7 @@ export default function DateCalculatorTool() {
             {quickDays.map((quickDay) => (
               <button
                 key={quickDay}
-                onClick={() => handleQuickDayClick(quickDay)}
+                onClick={() => handleQuickSelect(quickDay)}
                 className="px-2 py-1 rounded-md font-medium transition-all duration-200 text-sm"
                 style={{
                   backgroundColor: (!initialLoad && days === quickDay) ? '#2563eb' : '#f3f4f6',

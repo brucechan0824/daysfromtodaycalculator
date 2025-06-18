@@ -122,7 +122,7 @@ export default function RelatedDates({ currentDays = 14 }: RelatedDatesProps) {
         </h2>
       </div>
       
-      {sections.map((section, index) => (
+      {sections.map((section) => (
         <div key={section.title}>
           <div>
             <div className="flex items-center mb-6">

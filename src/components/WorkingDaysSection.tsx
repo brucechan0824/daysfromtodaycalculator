@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { addBusinessDays, format } from 'date-fns'
-import { Briefcase, Copy, Check, Calendar } from 'lucide-react'
+import { Briefcase, Calendar } from 'lucide-react'
 import { useSearchParams } from 'next/navigation'
 
 // 日期格式选项

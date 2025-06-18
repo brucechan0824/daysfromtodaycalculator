@@ -81,7 +81,7 @@ export default function DaysCalculator({ initialDays = 14 }: DaysCalculatorProps
     return null
   }
 
-  const holidayInfo = getHolidayInfo(targetDate)
+  // const holidayInfo = getHolidayInfo(targetDate) // 未使用，注释掉
 
   // 复制功能
   const handleCopy = async (text: string) => {

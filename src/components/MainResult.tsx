@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { addDays, format } from 'date-fns'
-import { Calendar, Copy, Check, Info } from 'lucide-react'
+import { Calendar } from 'lucide-react'
 
 interface MainResultProps {
   days: number
