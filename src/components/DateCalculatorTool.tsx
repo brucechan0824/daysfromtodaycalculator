@@ -99,11 +99,12 @@ export default function DateCalculatorTool() {
               <button
                 key={quickDay}
                 onClick={() => handleQuickDayClick(quickDay)}
-                className={`px-2 py-1 rounded-md font-medium transition-all duration-200 text-sm ${
-                  !initialLoad && days === quickDay
-                    ? 'bg-blue-600 text-white shadow-md'
-                    : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
-                }`}
+                className="px-2 py-1 rounded-md font-medium transition-all duration-200 text-sm"
+                style={{
+                  backgroundColor: (!initialLoad && days === quickDay) ? '#2563eb' : '#f3f4f6',
+                  color: (!initialLoad && days === quickDay) ? 'white' : '#000000',
+                  fontWeight: 'normal'
+                }}
               >
                 {quickDay}
               </button>
@@ -123,7 +124,12 @@ export default function DateCalculatorTool() {
               onChange={handleInputChange}
               onBlur={handleInputBlur}
               onKeyDown={handleKeyDown}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors text-sm"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors text-sm"
+              style={{
+                backgroundColor: '#ffffff',
+                color: '#000000',
+                borderColor: '#d1d5db'
+              }}
               min="1"
               max="3650"
               placeholder="Enter days"
