@@ -55,7 +55,7 @@ export default function DaysCalculator({ initialDays = 14 }: DaysCalculatorProps
     return isBusinessDays ? addBusinessDays(today, daysToAdd) : addDays(today, daysToAdd)
   }
   
-  const targetDate = calculateTargetDate()
+  // const targetDate = calculateTargetDate() // 未使用，注释掉
   
   // 检查目标日期附近的节日
   const getHolidayInfo = (date: Date) => {

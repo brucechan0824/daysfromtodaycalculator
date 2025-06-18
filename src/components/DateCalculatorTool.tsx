@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { addDays, addBusinessDays, format } from 'date-fns'
+import { addDays, addBusinessDays } from 'date-fns'
 import { Calendar, Calculator, ArrowRight, Clock } from 'lucide-react'
 
 export default function DateCalculatorTool() {
@@ -18,7 +18,7 @@ export default function DateCalculatorTool() {
     return isBusinessDays ? addBusinessDays(today, finalDays) : addDays(today, finalDays)
   }
 
-  const targetDate = calculateTargetDate()
+  // const targetDate = calculateTargetDate() // 未使用，注释掉
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
