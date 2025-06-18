@@ -12,11 +12,11 @@ export default function DateCalculatorTool() {
   // 快捷天数选项 - 基于竞品分析的热门天数
   const quickDays = [7, 14, 21, 30, 60, 90]
 
-  const calculateTargetDate = () => {
-    const today = new Date()
-    const finalDays = days <= 0 ? 1 : days // 确保至少为1
-    return isBusinessDays ? addBusinessDays(today, finalDays) : addDays(today, finalDays)
-  }
+  // const calculateTargetDate = () => {
+  //   const today = new Date()
+  //   const finalDays = days <= 0 ? 1 : days // 确保至少为1
+  //   return isBusinessDays ? addBusinessDays(today, finalDays) : addDays(today, finalDays)
+  // }
 
   // const targetDate = calculateTargetDate() // 未使用，注释掉
 

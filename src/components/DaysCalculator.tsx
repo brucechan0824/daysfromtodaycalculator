@@ -34,26 +34,26 @@ export default function DaysCalculator({ initialDays = 14 }: DaysCalculatorProps
 
   const today = new Date()
   
-  // 计算目标日期，根据时间单位
-  const calculateTargetDate = () => {
-    let daysToAdd = days
-    
-    switch (timeUnit) {
-      case 'weeks':
-        daysToAdd = days * 7
-        break
-      case 'quarters':
-        daysToAdd = days * 90 // 约3个月
-        break
-      case 'years':
-        daysToAdd = days * 365
-        break
-      default:
-        daysToAdd = days
-    }
-    
-    return isBusinessDays ? addBusinessDays(today, daysToAdd) : addDays(today, daysToAdd)
-  }
+  // 计算目标日期，根据时间单位 - 注释掉未使用的函数
+  // const calculateTargetDate = () => {
+  //   let daysToAdd = days
+  //   
+  //   switch (timeUnit) {
+  //     case 'weeks':
+  //       daysToAdd = days * 7
+  //       break
+  //     case 'quarters':
+  //       daysToAdd = days * 90 // 约3个月
+  //       break
+  //     case 'years':
+  //       daysToAdd = days * 365
+  //       break
+  //     default:
+  //       daysToAdd = days
+  //   }
+  //   
+  //   return isBusinessDays ? addBusinessDays(today, daysToAdd) : addDays(today, daysToAdd)
+  // }
   
   // const targetDate = calculateTargetDate() // 未使用，注释掉
   
