@@ -21,15 +21,15 @@ const holidays = [
 
 // 日期格式选项
 const dateFormats = {
-  us: { label: '🇺🇸 us United States', format: 'MMMM dd, yyyy', shortFormat: 'M/d/yy' },
-  uk: { label: '🇬🇧 uk United Kingdom', format: 'dd MMMM yyyy', shortFormat: 'dd/MM/yy' },
-  de: { label: '🇩🇪 de Germany', format: 'dd.MM.yyyy', shortFormat: 'dd.MM.yy' },
-  fr: { label: '🇫🇷 fr France', format: 'dd/MM/yyyy', shortFormat: 'dd/MM/yy' },
-  jp: { label: '🇯🇵 jp Japan', format: 'yyyy年MM月dd日', shortFormat: 'yy/MM/dd' },
-  cn: { label: '🇨🇳 cn China', format: 'yyyy年MM月dd日', shortFormat: 'yy/MM/dd' },
-  in: { label: '🇮🇳 in India', format: 'dd-MM-yyyy', shortFormat: 'dd-MM-yy' },
-  au: { label: '🇦🇺 au Australia', format: 'dd/MM/yyyy', shortFormat: 'dd/MM/yy' },
-  ca: { label: '🇨🇦 ca Canada', format: 'yyyy-MM-dd', shortFormat: 'yy-MM-dd' },
+  us: { label: 'United States', format: 'MMMM dd, yyyy', shortFormat: 'M/d/yy' },
+  uk: { label: 'United Kingdom', format: 'dd MMMM yyyy', shortFormat: 'dd/MM/yy' },
+  de: { label: 'Germany', format: 'dd.MM.yyyy', shortFormat: 'dd.MM.yy' },
+  fr: { label: 'France', format: 'dd/MM/yyyy', shortFormat: 'dd/MM/yy' },
+  jp: { label: 'Japan', format: 'yyyy年MM月dd日', shortFormat: 'yy/MM/dd' },
+  cn: { label: 'China', format: 'yyyy年MM月dd日', shortFormat: 'yy/MM/dd' },
+  in: { label: 'India', format: 'dd-MM-yyyy', shortFormat: 'dd-MM-yy' },
+  au: { label: 'Australia', format: 'dd/MM/yyyy', shortFormat: 'dd/MM/yy' },
+  ca: { label: 'Canada', format: 'yyyy-MM-dd', shortFormat: 'yy-MM-dd' },
   iso: { label: 'ISO', format: 'yyyy-MM-dd', shortFormat: 'yyyy-MM-dd' }
 }
 
@@ -119,19 +119,9 @@ export default function MainResult({ days, title }: MainResultProps) {
               {/* Copy Button */}
               <button
                 onClick={() => handleCopy(formattedDate)}
-                className="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-700 text-blue-600 dark:text-blue-400 border border-blue-300 dark:border-blue-500 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-600 transition-colors"
+                className="px-3 py-1 text-sm bg-blue-50 text-blue-600 border border-blue-200 rounded hover:bg-blue-100 transition-colors"
               >
-                {copied === formattedDate ? (
-                  <>
-                    <Check className="w-4 h-4 mr-2" />
-                    Copied!
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-4 h-4 mr-2" />
-                    Copy Date
-                  </>
-                )}
+                {copied === formattedDate ? 'Copied!' : 'Copy'}
               </button>
             </div>
 
@@ -157,10 +147,15 @@ export default function MainResult({ days, title }: MainResultProps) {
               <select
                 value={dateFormat}
                 onChange={(e) => setDateFormat(e.target.value as keyof typeof dateFormats)}
-                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                style={{
+                  backgroundColor: '#ffffff',
+                  color: '#000000',
+                  border: '1px solid #d1d5db'
+                }}
+                className="w-full px-4 py-2 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
               >
                 {Object.entries(dateFormats).map(([key, format]) => (
-                  <option key={key} value={key}>
+                  <option key={key} value={key} style={{ backgroundColor: '#ffffff', color: '#000000' }}>
                     {format.label}
                   </option>
                 ))}
@@ -175,13 +170,13 @@ export default function MainResult({ days, title }: MainResultProps) {
                   <span className="inline-block w-8 h-6 bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 text-xs font-medium rounded px-1 mr-3 text-center leading-6">
                     {dateFormat.toUpperCase()}
                   </span>
-                  <span className="text-gray-800 dark:text-gray-200 font-medium">
+                  <span style={{ color: '#000000' }} className="font-medium">
                     {formattedDate}
                   </span>
                 </div>
                 <button
                   onClick={() => handleCopy(formattedDate)}
-                  className="px-3 py-1 text-sm text-blue-600 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-900/40 rounded transition-colors"
+                  className="px-3 py-1 text-sm bg-blue-50 text-blue-600 border border-blue-200 rounded hover:bg-blue-100 transition-colors"
                 >
                   {copied === formattedDate ? 'Copied!' : 'Copy'}
                 </button>
@@ -193,13 +188,13 @@ export default function MainResult({ days, title }: MainResultProps) {
                   <span className="inline-block w-8 h-6 bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 text-xs font-medium rounded px-1 mr-3 text-center leading-6">
                     {dateFormat.toUpperCase()}
                   </span>
-                  <span className="text-gray-800 dark:text-gray-200 font-medium">
+                  <span style={{ color: '#000000' }} className="font-medium">
                     {shortFormattedDate}
                   </span>
                 </div>
                 <button
                   onClick={() => handleCopy(shortFormattedDate)}
-                  className="px-3 py-1 text-sm text-blue-600 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-900/40 rounded transition-colors"
+                  className="px-3 py-1 text-sm bg-blue-50 text-blue-600 border border-blue-200 rounded hover:bg-blue-100 transition-colors"
                 >
                   {copied === shortFormattedDate ? 'Copied!' : 'Copy'}
                 </button>
@@ -211,13 +206,13 @@ export default function MainResult({ days, title }: MainResultProps) {
                   <span className="inline-block w-8 h-6 bg-gray-200 dark:bg-gray-600 text-gray-600 dark:text-gray-400 text-xs font-medium rounded px-1 mr-3 text-center leading-6">
                     ISO
                   </span>
-                  <span className="text-gray-800 dark:text-gray-200 font-medium">
+                  <span style={{ color: '#000000' }} className="font-medium">
                     {isoDate}
                   </span>
                 </div>
                 <button
                   onClick={() => handleCopy(isoDate)}
-                  className="px-3 py-1 text-sm text-blue-600 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-900/40 rounded transition-colors"
+                  className="px-3 py-1 text-sm bg-blue-50 text-blue-600 border border-blue-200 rounded hover:bg-blue-100 transition-colors"
                 >
                   {copied === isoDate ? 'Copied!' : 'Copy'}
                 </button>
