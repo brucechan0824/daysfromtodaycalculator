@@ -60,7 +60,7 @@ export default function WorkingDaysSection({ days }: WorkingDaysSectionProps) {
   }
 
   return (
-    <div id="working-days-section" className="mb-12">
+    <div id="working-days-section" className="mb-8">
       <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 transition-colors">
         {/* 左右分栏布局 */}
         <div className="grid lg:grid-cols-2 gap-8">

@@ -7,6 +7,7 @@ import DateCalculatorTool from '@/components/DateCalculatorTool'
 import MainResult from '@/components/MainResult'
 import WorkingDaysSection from '@/components/WorkingDaysSection'
 import RelatedDates from '@/components/RelatedDates'
+import BackToCalculator from '@/components/BackToCalculator'
 import AutoScrollHandler from '@/components/AutoScrollHandler'
 
 interface PageProps {
@@ -66,7 +67,7 @@ export default async function DaysPage({ params }: PageProps) {
       {/* 自动滚动处理器 */}
       <AutoScrollHandler />
       
-      <main className="container mx-auto px-6 lg:px-8 py-8 max-w-7xl">
+      <main className="container mx-auto px-6 lg:px-8 pt-6 pb-12 max-w-7xl">
         {/* Breadcrumb Navigation */}
         <Breadcrumb items={[
           { label: `${daysCount} Days from Today` }
@@ -87,6 +88,9 @@ export default async function DaysPage({ params }: PageProps) {
             
             {/* More Related Links */}
             <RelatedDates currentDays={daysCount} />
+            
+            {/* Back to Calculator CTA */}
+            <BackToCalculator />
           </div>
           
           {/* Right Sidebar - 占3/10宽度 */}

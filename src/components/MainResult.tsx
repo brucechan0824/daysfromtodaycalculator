@@ -80,7 +80,7 @@ export default function MainResult({ days, title }: MainResultProps) {
   }
 
   return (
-    <div className="mb-12">
+    <div className="mb-8">
       {/* 页面标题 */}
       <div className="text-center mb-8">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-gray-200 mb-2">

@@ -113,7 +113,7 @@ export default function RelatedDates({ currentDays = 14 }: RelatedDatesProps) {
   }).filter(section => section.items.length > 0) // 只显示有内容的分类
 
   return (
-    <div className="space-y-12">
+    <div className="space-y-12 mb-6">
       {/* 总标题 - 参考Widgetly的设计 */}
       <div className="text-center mb-8">
         <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-200 mb-2">

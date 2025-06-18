@@ -136,27 +136,7 @@ export default function QuickLinks() {
         )
       })}
 
-      {/* 底部说明 */}
-      <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 mt-8">
-        <div className="text-center">
-          <div className="flex items-center justify-center mb-2">
-            <Calendar className="w-5 h-5 text-gray-500 dark:text-gray-400 mr-2" />
-            <span className="font-medium text-gray-700 dark:text-gray-300">
-              Need a different calculation?
-            </span>
-          </div>
-          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-            Use our calculator above to find any number of days from today, 
-            including business days and weekend calculations.
-          </p>
-          <div className="flex flex-wrap justify-center gap-2 text-xs text-gray-500 dark:text-gray-400">
-            <span>✓ Any custom date</span>
-            <span>✓ Business days only</span>
-            <span>✓ Multiple formats</span>
-            <span>✓ Holiday detection</span>
-          </div>
-        </div>
-    </div>
+
     </section>
   )
 } 
