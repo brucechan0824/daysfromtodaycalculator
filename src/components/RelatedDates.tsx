@@ -1,6 +1,7 @@
 'use client'
 
 import { ArrowRight, TrendingUp, Calendar } from 'lucide-react'
+import React from 'react'
 
 interface DateLink {
   value: number
@@ -12,7 +13,7 @@ interface DateLink {
 
 interface DateSection {
   title: string
-  icon: any
+  icon: React.ComponentType<{ className?: string }>
   items: DateLink[]
 }
 

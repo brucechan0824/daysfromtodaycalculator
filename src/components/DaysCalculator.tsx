@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { addDays, format, addBusinessDays } from 'date-fns'
 import { Calendar, Copy, Check, Clock } from 'lucide-react'
 
@@ -128,9 +128,9 @@ export default function DaysCalculator({ initialDays = 14 }: DaysCalculatorProps
     return dates
   }
 
-  // 生成内链数据
-  const formattedDate = format(targetDate, dateFormats[dateFormat].format)
-  const dayOfWeek = format(targetDate, 'EEEE')
+  // 生成内链数据 - 注释掉未使用的变量
+  // const formattedDate = format(targetDate, dateFormats[dateFormat].format)
+  // const dayOfWeek = format(targetDate, 'EEEE')
   
   // 当前页面的固定结果（不受用户输入影响）
   const currentPageDate = addDays(new Date(), initialDays || 14)
