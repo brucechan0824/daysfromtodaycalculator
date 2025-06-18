@@ -36,7 +36,7 @@
 - **机会窗口**: daysfromtoday.tools域名具有完美关键词匹配优势
 
 #### 主要关键词
-- **30 days from today**: 246.0K搜索量，KD 50% 
+- **30 days from today**: 246.0K搜索量，KD 50%
 - **90 days from today**: 246.0K搜索量，KD 55%
 - **60 days from today**: 201.0K搜索量，KD 52%
 - **45 days from today**: 165.0K搜索量，KD 41%

@@ -19,9 +19,9 @@ export default function HomePage() {
           <div className="lg:col-span-7 lg:pl-4">
             {/* Calculator Tool */}
             <DateCalculatorTool />
-            
+        
             {/* Popular Days Quick Links */}
-            <QuickLinks />
+        <QuickLinks />
           </div>
           
           {/* Right Sidebar - 占3/10宽度 */}
