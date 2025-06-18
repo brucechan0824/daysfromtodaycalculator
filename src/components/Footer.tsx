@@ -22,7 +22,7 @@ export default function Footer() {
           </div>
           
           <p className="text-gray-500 dark:text-gray-400 text-sm transition-colors">
-            © 2025 Date Calculator. Made with ❤️ for planning your future.
+            © 2025 Days From Today Calculator. Made with ❤️ for planning your future.
           </p>
         </div>
       </div>

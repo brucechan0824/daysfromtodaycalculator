@@ -120,7 +120,7 @@ export default function QuickLinks() {
                       border rounded-xl p-4 transition-all duration-200 
                       hover:shadow-md hover:scale-105 group flex items-center justify-between min-h-[60px]
                     `}
-                  >
+                >
                     {/* 左侧：数字 + Days */}
                     <div className={`text-lg font-semibold ${colors.text}`}>
                       {item.days} {item.days === 1 ? 'Day' : 'Days'}

@@ -19,21 +19,83 @@ const holidays = [
   { date: '11-28', name: 'Thanksgiving', emoji: '🦃' },
 ]
 
-// 日期格式选项 - 基于竞品分析优化
-const dateFormats = [
-  { flag: '🇺🇸', label: 'US Format', format: 'MMMM dd, yyyy', example: 'December 25, 2025' },
-  { flag: '🇬🇧', label: 'UK Format', format: 'dd MMMM yyyy', example: '25 December 2025' },
-  { flag: '🇺🇸', label: 'US Short', format: 'M/d/yy', example: '12/25/25' },
-  { flag: '🇬🇧', label: 'UK Short', format: 'd/M/yy', example: '25/12/25' },
-  { flag: '🌐', label: 'ISO Format', format: 'yyyy-MM-dd', badge: 'ISO', example: '2025-12-25' },
+// 国家格式选项 - 带国旗的下拉框
+const countryFormats = [
+  { code: 'US', flag: '🇺🇸', name: 'United States', 
+    formats: [
+      { format: 'MMMM dd, yyyy', label: 'Full format' },
+      { format: 'M/d/yy', label: 'Short format' },
+      { format: 'yyyy-MM-dd', label: 'ISO format', badge: 'ISO' }
+    ]
+  },
+  { code: 'CA', flag: '🇨🇦', name: 'Canada',
+    formats: [
+      { format: 'MMMM dd, yyyy', label: 'Full format' },
+      { format: 'M/d/yy', label: 'Short format' },
+      { format: 'yyyy-MM-dd', label: 'ISO format', badge: 'ISO' }
+    ]
+  },
+  { code: 'UK', flag: '🇬🇧', name: 'United Kingdom',
+    formats: [
+      { format: 'dd MMMM yyyy', label: 'Full format' },
+      { format: 'd/M/yy', label: 'Short format' },
+      { format: 'yyyy-MM-dd', label: 'ISO format', badge: 'ISO' }
+    ]
+  },
+  { code: 'DE', flag: '🇩🇪', name: 'Germany',
+    formats: [
+      { format: 'dd MMMM yyyy', label: 'Full format' },
+      { format: 'dd.MM.yy', label: 'Short format' },
+      { format: 'yyyy-MM-dd', label: 'ISO format', badge: 'ISO' }
+    ]
+  },
+  { code: 'FR', flag: '🇫🇷', name: 'France',
+    formats: [
+      { format: 'dd MMMM yyyy', label: 'Full format' },
+      { format: 'dd/MM/yy', label: 'Short format' },
+      { format: 'yyyy-MM-dd', label: 'ISO format', badge: 'ISO' }
+    ]
+  },
+  { code: 'JP', flag: '🇯🇵', name: 'Japan',
+    formats: [
+      { format: 'yyyy年MM月dd日', label: 'Full format' },
+      { format: 'yyyy/MM/dd', label: 'Short format' },
+      { format: 'yyyy-MM-dd', label: 'ISO format', badge: 'ISO' }
+    ]
+  },
+  { code: 'CN', flag: '🇨🇳', name: 'China',
+    formats: [
+      { format: 'yyyy年MM月dd日', label: 'Full format' },
+      { format: 'yyyy/MM/dd', label: 'Short format' },
+      { format: 'yyyy-MM-dd', label: 'ISO format', badge: 'ISO' }
+    ]
+  },
+  { code: 'KR', flag: '🇰🇷', name: 'South Korea',
+    formats: [
+      { format: 'yyyy년 MM월 dd일', label: 'Full format' },
+      { format: 'yyyy.MM.dd', label: 'Short format' },
+      { format: 'yyyy-MM-dd', label: 'ISO format', badge: 'ISO' }
+    ]
+  },
+  { code: 'IN', flag: '🇮🇳', name: 'India',
+    formats: [
+      { format: 'dd MMMM yyyy', label: 'Full format' },
+      { format: 'dd/MM/yy', label: 'Short format' },
+      { format: 'yyyy-MM-dd', label: 'ISO format', badge: 'ISO' }
+    ]
+  }
 ]
 
 export default function MainResult({ days, title }: MainResultProps) {
   const [copiedFormat, setCopiedFormat] = useState<string | null>(null)
+  const [selectedCountry, setSelectedCountry] = useState('US')
   
   const today = new Date()
   const targetDate = addDays(today, days)
   const dayOfWeek = format(targetDate, 'EEEE')
+  
+  // 获取选中国家的格式
+  const selectedCountryData = countryFormats.find(country => country.code === selectedCountry) || countryFormats[0]
   
   // 时间单位转换 - 基于竞品inchcalculator.com的功能
   const timeUnits = {
@@ -167,48 +229,80 @@ export default function MainResult({ days, title }: MainResultProps) {
 
         {/* 右侧：多种格式显示 - 优化为移动端友好 */}
         <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 border border-gray-200 dark:border-gray-700">
-          <div className="flex items-center mb-6">
-            <Info className="w-5 h-5 text-gray-500 dark:text-gray-400 mr-2" />
+          <div className="flex items-center mb-4">
+            <Calendar className="w-5 h-5 text-gray-500 dark:text-gray-400 mr-2" />
             <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
-              Multiple Date Formats
+              Date Formats
             </h3>
           </div>
           
-          <div className="space-y-3">
-            {dateFormats.map((fmt, index) => (
-              <div key={index} className="flex items-center justify-between p-3 rounded-xl border border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200">
-                <div className="flex items-center space-x-3 flex-1 min-w-0">
-                  {fmt.badge ? (
-                    <span className="px-2 py-1 bg-gray-200 dark:bg-gray-600 text-xs font-mono rounded">
-                      {fmt.badge}
-                    </span>
-                  ) : (
-                    <span className="text-xl">{fmt.flag}</span>
-                  )}
-                  <div className="flex-1 min-w-0">
-                    <div className="font-medium text-gray-900 dark:text-gray-100 truncate">
-                      {format(targetDate, fmt.format)}
-                    </div>
-                    <div className="text-xs text-gray-500 dark:text-gray-400 truncate">
-                      {fmt.label}
+          <div className="space-y-4">
+            {/* 国家选择下拉框 - 带国旗显示 */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Select Country Format
+              </label>
+              <div className="relative">
+                <select
+                  value={selectedCountry}
+                  onChange={(e) => setSelectedCountry(e.target.value)}
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors appearance-none cursor-pointer text-base"
+                  style={{ paddingLeft: '3rem' }}
+                >
+                  {countryFormats.map((country) => (
+                    <option key={country.code} value={country.code}>
+                      {country.flag} {country.name}
+                    </option>
+                  ))}
+                </select>
+                {/* 显示选中国家的国旗 */}
+                <div className="absolute left-3 top-1/2 transform -translate-y-1/2 pointer-events-none text-xl">
+                  {selectedCountryData.flag}
+                </div>
+                {/* 下拉箭头 */}
+                <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                  <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            
+            {/* 显示选中国家的3个格式 */}
+            <div className="space-y-3">
+              {selectedCountryData.formats.map((fmt, index) => (
+                <div key={index} className="flex items-center justify-between p-3 rounded-xl border border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200">
+                  <div className="flex items-center space-x-3 flex-1 min-w-0">
+                    {fmt.badge ? (
+                      <span className="px-2 py-1 bg-gray-200 dark:bg-gray-600 text-xs font-mono rounded">
+                        {fmt.badge}
+                      </span>
+                    ) : (
+                      <span className="text-xl">{selectedCountryData.flag}</span>
+                    )}
+                    <div className="flex-1 min-w-0">
+                      <div className="font-medium text-gray-900 dark:text-gray-100 truncate">
+                        {format(targetDate, fmt.format)}
+                      </div>
                     </div>
                   </div>
+                  
+                  <button
+                    onClick={() => handleCopy(format(targetDate, fmt.format), fmt.format)}
+                    className="ml-3 px-3 py-1.5 text-sm bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-500 transition-colors flex-shrink-0"
+                  >
+                    {copiedFormat === fmt.format ? (
+                      <span className="flex items-center">
+                        <Check className="w-3 h-3 mr-1" />
+                        Copied
+                      </span>
+                    ) : (
+                      'Copy'
+                    )}
+                  </button>
                 </div>
-                <button
-                  onClick={() => handleCopy(format(targetDate, fmt.format), fmt.format)}
-                  className="ml-3 px-3 py-1.5 text-sm bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-500 transition-colors flex-shrink-0"
-                >
-                  {copiedFormat === fmt.format ? (
-                    <span className="flex items-center">
-                      <Check className="w-3 h-3 mr-1" />
-                      Copied
-                    </span>
-                  ) : (
-                    'Copy'
-                  )}
-                </button>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>

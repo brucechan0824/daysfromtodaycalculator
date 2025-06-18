@@ -6,7 +6,6 @@ import Breadcrumb from '@/components/Breadcrumb'
 import DateCalculatorTool from '@/components/DateCalculatorTool'
 import MainResult from '@/components/MainResult'
 import WorkingDaysSection from '@/components/WorkingDaysSection'
-import RelatedDatesTable from '@/components/RelatedDatesTable'
 import RelatedDates from '@/components/RelatedDates'
 
 interface PageProps {
@@ -81,9 +80,6 @@ export default async function DaysPage({ params }: PageProps) {
             
             {/* Working Days Section (Expandable) */}
             <WorkingDaysSection days={daysCount} />
-            
-            {/* Related Dates Table */}
-            <RelatedDatesTable currentDays={daysCount} />
             
             {/* More Related Links */}
             <RelatedDates currentDays={daysCount} />
