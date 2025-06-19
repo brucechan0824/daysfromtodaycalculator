@@ -10,9 +10,9 @@ import BackToCalculator from '@/components/BackToCalculator'
 import AutoScrollHandler from '@/components/AutoScrollHandler'
 
 interface PageProps {
-  params: {
+  params: Promise<{
     days: string
-  }
+  }>
 }
 
 // 生成静态页面 - 基于SEMrush数据优化
