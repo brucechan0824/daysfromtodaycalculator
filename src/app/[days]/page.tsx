@@ -2,12 +2,14 @@ import { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Breadcrumb from '@/components/Breadcrumb'
-import DateCalculatorTool from '@/components/DateCalculatorTool'
+import CalculatorPromotion from '@/components/CalculatorPromotion'
 import MainResult from '@/components/MainResult'
-import WorkingDaysSection from '@/components/WorkingDaysSection'
+import BusinessDaysSection from '@/components/BusinessDaysSection'
 import RelatedDates from '@/components/RelatedDates'
 import BackToCalculator from '@/components/BackToCalculator'
 import AutoScrollHandler from '@/components/AutoScrollHandler'
+import ManualVerification from '@/components/ManualVerification'
+
 
 interface PageProps {
   params: Promise<{
@@ -51,17 +53,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (daysCount === 14) {
     return {
       title: `What is 14 Days From Today? | 14 Days From Today Calculator`,
-      description: `Calculate what is 14 days from today. Find out what day is 14 days from today with our free calculator. Get the exact date 14 days from now.`,
-      keywords: `14 days from today, 14 days from now, what is 14 days from today, what day is 14 days from today, whats 14 days from now, what is the date 14 days from now, 14 days ahead, date calculator`,
+      description: `Calculate what is 14 days from today. Find out what day is 14 days from today with our free calculator. Also includes 14 business days from today calculation. Get the exact date 14 days from now.`,
+      keywords: `14 days from today, 14 days from now, what is 14 days from today, what day is 14 days from today, 14 business days from today, what is 14 business days from today, whats 14 days from now, what is the date 14 days from now, 14 days ahead, date calculator`,
       openGraph: {
         title: `What is 14 Days From Today? | 14 Days From Today Calculator`,
-        description: `Calculate what is 14 days from today. Find out what day is 14 days from today with our free calculator.`,
+        description: `Calculate what is 14 days from today and 14 business days from today. Find out what day is 14 days from today with our free calculator.`,
         type: 'website',
       },
       twitter: {
         card: 'summary_large_image',
         title: `What is 14 Days From Today? | 14 Days From Today Calculator`,
-        description: `Calculate what is 14 days from today. Free calculator with instant results.`,
+        description: `Calculate what is 14 days from today and 14 business days from today. Free calculator with instant results.`,
       },
     }
   }
@@ -69,17 +71,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   // 其他天数的通用优化
   return {
     title: `What is ${daysCount} Days From Today? - ${daysCount} Days From Now Calculator`,
-    description: `Calculate what is ${daysCount} days from today and ${daysCount} days from now. Free online date calculator with instant results and multiple formats.`,
-    keywords: `${daysCount} days from today, ${daysCount} days from now, what is ${daysCount} days from today, what is ${daysCount} days from now, date calculator, ${daysCount} days later, future date calculator`,
+    description: `Calculate what is ${daysCount} days from today and ${daysCount} days from now. Also includes ${daysCount} business days from today calculation. Free online date calculator with instant results and multiple formats.`,
+    keywords: `${daysCount} days from today, ${daysCount} days from now, what is ${daysCount} days from today, what day is ${daysCount} days from today, ${daysCount} business days from today, what is ${daysCount} business days from today, what is the date ${daysCount} days from now, ${daysCount} days ahead, date calculator`,
     openGraph: {
       title: `What is ${daysCount} Days From Today? - Date Calculator`,
-      description: `Calculate what is ${daysCount} days from today and ${daysCount} days from now. Free date calculator with instant results.`,
+      description: `Calculate what is ${daysCount} days from today and ${daysCount} business days from today. Free date calculator with instant results.`,
       type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
       title: `What is ${daysCount} Days From Today? - Date Calculator`,
-      description: `Calculate what is ${daysCount} days from today. Free calculator with instant results.`,
+      description: `Calculate what is ${daysCount} days from today and ${daysCount} business days from today. Free calculator with instant results.`,
     },
   }
 }
@@ -109,11 +111,14 @@ export default async function DaysPage({ params }: PageProps) {
             {/* 🎯 答案优先：Main Result Display - 移到最顶部 */}
             <MainResult days={daysCount} />
             
-            {/* 🔧 交互工具：Calculator Tool - 移到答案下方 */}
-            <DateCalculatorTool />
+            {/* 🔧 推广组件：Calculator Promotion - 引导用户回到首页 */}
+            <CalculatorPromotion days={daysCount} />
             
-            {/* Working Days Section (Expandable) */}
-            <WorkingDaysSection days={daysCount} />
+            {/* 验证方法和日历 - 包含周末的日期计算 */}
+            <ManualVerification days={daysCount} />
+            
+            {/* Business Days Section (Expandable) - 不包含周末的日期计算 */}
+            <BusinessDaysSection days={daysCount} />
             
             {/* More Related Links */}
             <RelatedDates currentDays={daysCount} />
