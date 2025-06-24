@@ -1,10 +1,10 @@
 'use client'
 
-import { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Breadcrumb from '@/components/Breadcrumb'
 import Calendar from '@/components/Calendar'
+import Link from 'next/link'
 
 // 注意：使用了'use client'指令后，metadata需要移动到单独的文件中
 // 这里我们暂时注释掉，稍后会创建一个单独的metadata文件
@@ -141,12 +141,12 @@ export default function CalendarPage() {
           
           <div className="space-y-4 text-gray-700 dark:text-gray-300">
             <p>
-              Our calendar is a useful tool for manually verifying date calculations or planning ahead. Here's how you can use it:
+              Our calendar is a useful tool for manually verifying date calculations or planning ahead. Here&apos;s how you can use it:
             </p>
             
             <ol className="list-decimal pl-5 space-y-2">
               <li>
-                <strong>Date Verification</strong>: Use the calendar to manually count days from today to verify our calculator's results.
+                <strong>Date Verification</strong>: Use the calendar to manually count days from today to verify our calculator&apos;s results.
               </li>
               <li>
                 <strong>Planning Ahead</strong>: Look up future dates for planning events, deadlines, or important milestones.
@@ -160,7 +160,7 @@ export default function CalendarPage() {
             </ol>
             
             <p className="mt-4">
-              For more precise date calculations, we recommend using our <a href="/" className="text-blue-600 dark:text-blue-400 hover:underline">Days From Today Calculator</a> which automatically handles leap years, different month lengths, and provides additional formats.
+              For more precise date calculations, we recommend using our <Link href="/" className="text-blue-600 dark:text-blue-400 hover:underline">Days From Today Calculator</Link> which automatically handles leap years, different month lengths, and provides additional formats.
             </p>
           </div>
         </div>

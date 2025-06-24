@@ -49,7 +49,7 @@ export default function ManualVerification({ days }: ManualVerificationProps) {
                   calendar
                 </div>
                 <div className="text-gray-600 dark:text-gray-400 text-sm">
-                  Look at today's date on the calendar and count forward one day at a time until you've counted {days} total days.
+                  Look at today&apos;s date on the calendar and count forward one day at a time until you&apos;ve counted {days} total days.
                 </div>
               </div>
             </div>
