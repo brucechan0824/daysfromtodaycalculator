@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import Script from "next/script";
 
 const geist = Geist({
   variable: "--font-geist-sans",
@@ -59,23 +60,21 @@ export default function RootLayout({
       <head>
         <link rel="canonical" href="https://daysfromtoday.app" />
         <meta name="theme-color" content="#3B82F6" />
-        
-        {/* Google Analytics */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-CMN4W44SDF"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-CMN4W44SDF');
-            `,
-          }}
-        />
       </head>
       <body
         className={`${geist.variable} ${geistMono.variable} antialiased`}
       >
+        {/* Google Analytics */}
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-CMN4W44SDF" strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-CMN4W44SDF');
+          `}
+        </Script>
+        
         <ThemeProvider>
         {children}
         </ThemeProvider>
