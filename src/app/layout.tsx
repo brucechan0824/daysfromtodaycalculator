@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Days From Today - Calculate Future Dates Fast & Easy",
   description: "Calculate what date it will be X days from today. Free online calculator with business days, holidays, and multiple date formats. Instant results for any number of days.",
-  keywords: "days from today, date calculator, future date, business days calculator, working days, days ahead calculator",
+  keywords: "days from today, date calculator, future date, business days calculator, business days from today, days ahead calculator",
   authors: [{ name: "Days From Today" }],
   creator: "Days From Today",
   publisher: "Days From Today",
