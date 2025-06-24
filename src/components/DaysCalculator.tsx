@@ -103,9 +103,9 @@ export default function DaysCalculator({ initialDays = 14 }: DaysCalculatorProps
     
     let url = `/${days}-${unitSuffix}-from-today`
     
-    // 如果勾选了business only，添加URL参数以便自动滚动到工作日部分
+    // 如果勾选了business only，添加URL参数以便自动滚动到商业日部分
     if (isBusinessDays) {
-      url += '?scrollTo=working-days'
+      url += '?scrollTo=business-days'
     }
     
     window.location.href = url

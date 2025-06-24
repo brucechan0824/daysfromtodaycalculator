@@ -19,28 +19,28 @@ const dateFormats = {
   iso: { label: 'ISO', format: 'yyyy-MM-dd', shortFormat: 'yyyy-MM-dd' }
 }
 
-interface WorkingDaysSectionProps {
+interface BusinessDaysSectionProps {
   days: number
 }
 
-export default function WorkingDaysSection({ days }: WorkingDaysSectionProps) {
+export default function BusinessDaysSection({ days }: BusinessDaysSectionProps) {
   const [copied, setCopied] = useState('')
   const [dateFormat, setDateFormat] = useState<keyof typeof dateFormats>('us')
   const searchParams = useSearchParams()
   
   const today = new Date()
-  const workingDate = addBusinessDays(today, days)
-  const dayOfWeek = format(workingDate, 'EEEE')
-  const formattedDate = format(workingDate, dateFormats[dateFormat].format)
-  const shortFormattedDate = format(workingDate, dateFormats[dateFormat].shortFormat)
-  const isoDate = format(workingDate, 'yyyy-MM-dd')
+  const businessDate = addBusinessDays(today, days)
+  const dayOfWeek = format(businessDate, 'EEEE')
+  const formattedDate = format(businessDate, dateFormats[dateFormat].format)
+  const shortFormattedDate = format(businessDate, dateFormats[dateFormat].shortFormat)
+  const isoDate = format(businessDate, 'yyyy-MM-dd')
   
   // 检查URL参数，如果需要滚动到工作日部分，自动滚动
   useEffect(() => {
     const scrollTo = searchParams.get('scrollTo')
-    if (scrollTo === 'working-days') {
+    if (scrollTo === 'business-days') {
       setTimeout(() => {
-        document.getElementById('working-days-section')?.scrollIntoView({
+        document.getElementById('business-days-section')?.scrollIntoView({
           behavior: 'smooth',
           block: 'start'
         })
@@ -60,7 +60,7 @@ export default function WorkingDaysSection({ days }: WorkingDaysSectionProps) {
   }
 
   return (
-    <div id="working-days-section" className="mb-8">
+    <div id="business-days-section" className="mt-8 mb-8">
       <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 transition-colors">
         {/* 左右分栏布局 */}
         <div className="grid lg:grid-cols-2 gap-8">
@@ -70,7 +70,7 @@ export default function WorkingDaysSection({ days }: WorkingDaysSectionProps) {
             <div className="flex items-center justify-center mb-4">
               <Briefcase className="w-6 h-6 text-orange-600 dark:text-orange-400 mr-2" />
               <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200">
-                {days} working days from today
+                {days} business days from today
               </h2>
             </div>
 

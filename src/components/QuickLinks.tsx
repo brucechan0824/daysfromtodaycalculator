@@ -135,7 +135,33 @@ export default function QuickLinks() {
           </div>
         )
       })}
-
+      
+      {/* 日历工具链接 */}
+      <div className="mt-10 pt-8 border-t border-gray-200 dark:border-gray-700">
+        <div className="flex items-center mb-4">
+          <Calendar className="w-5 h-5 text-gray-500 dark:text-gray-400 mr-2" />
+          <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300">
+            Calendar Tools
+          </h3>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <Link
+            href="/calendar"
+            className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 
+                    hover:bg-blue-100 dark:hover:bg-blue-900/40 rounded-xl p-4 transition-all duration-200 
+                    hover:shadow-md hover:scale-105 group flex items-center justify-between"
+          >
+            <div className="flex items-center">
+              <Calendar className="w-5 h-5 text-blue-600 dark:text-blue-400 mr-3" />
+              <div className="text-lg font-semibold text-blue-700 dark:text-blue-300">
+                2025 Calendar
+              </div>
+            </div>
+            <ArrowRight className="w-5 h-5 text-blue-700 dark:text-blue-300 opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
+          </Link>
+        </div>
+      </div>
 
     </section>
   )

@@ -17,7 +17,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // 有价值搜索量 (>9.9K)
     5, 25, 31, 42, 56, 70, 150,
     // 其他重要天数
-    365, 1, 2, 3, 15, 18, 24, 27, 36, 48, 55, 63, 72, 81, 95, 105, 110, 125, 135, 160, 200, 250, 300
+    365,
+    // 其他有搜索量的天数
+    1, 2, 3, 15, 18, 24, 27, 36, 48, 55, 63, 72, 81, 95, 105, 110, 125, 135, 160, 200, 250, 300
   ]
   
   // 去重并排序
@@ -38,6 +40,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 1,
+    },
+    // 日历页面
+    {
+      url: `${baseUrl}/calendar`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
     },
     // 动态生成的页面
     ...dynamicPages,
