@@ -41,16 +41,46 @@ export function generateStaticParams() {
   }))
 }
 
-// SEO metadata
+// SEO metadata - 增强关键词覆盖
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const resolvedParams = await params
   const daysStr = resolvedParams.days.replace('-days-from-today', '')
   const daysCount = parseInt(daysStr) || 14
 
+  // 为14天特别优化
+  if (daysCount === 14) {
+    return {
+      title: `What is 14 Days From Today? | 14 Days From Today Calculator`,
+      description: `Calculate what is 14 days from today. Find out what day is 14 days from today with our free calculator. Get the exact date 14 days from now.`,
+      keywords: `14 days from today, 14 days from now, what is 14 days from today, what day is 14 days from today, whats 14 days from now, what is the date 14 days from now, 14 days ahead, date calculator`,
+      openGraph: {
+        title: `What is 14 Days From Today? | 14 Days From Today Calculator`,
+        description: `Calculate what is 14 days from today. Find out what day is 14 days from today with our free calculator.`,
+        type: 'website',
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: `What is 14 Days From Today? | 14 Days From Today Calculator`,
+        description: `Calculate what is 14 days from today. Free calculator with instant results.`,
+      },
+    }
+  }
+
+  // 其他天数的通用优化
   return {
-    title: `What is ${daysCount} Days From Today? - Date Calculator`,
-    description: `Calculate what date it will be ${daysCount} days from today. Free date calculator with related date suggestions and multiple time units.`,
-    keywords: `${daysCount} days from today, date calculator, future date, ${daysCount} days later`,
+    title: `What is ${daysCount} Days From Today? - ${daysCount} Days From Now Calculator`,
+    description: `Calculate what is ${daysCount} days from today and ${daysCount} days from now. Free online date calculator with instant results and multiple formats.`,
+    keywords: `${daysCount} days from today, ${daysCount} days from now, what is ${daysCount} days from today, what is ${daysCount} days from now, date calculator, ${daysCount} days later, future date calculator`,
+    openGraph: {
+      title: `What is ${daysCount} Days From Today? - Date Calculator`,
+      description: `Calculate what is ${daysCount} days from today and ${daysCount} days from now. Free date calculator with instant results.`,
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `What is ${daysCount} Days From Today? - Date Calculator`,
+      description: `Calculate what is ${daysCount} days from today. Free calculator with instant results.`,
+    },
   }
 }
 
