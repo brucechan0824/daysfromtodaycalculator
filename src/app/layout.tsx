@@ -58,7 +58,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="canonical" href="https://daysfromtoday.app" />
+        <link rel="canonical" href="https://daysfromtoday.tools" />
         <meta name="theme-color" content="#3B82F6" />
       </head>
       <body
