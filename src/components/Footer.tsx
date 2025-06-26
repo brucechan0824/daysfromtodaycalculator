@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { ExternalLink, Users, Calendar } from 'lucide-react'
 
 export default function Footer() {
@@ -36,24 +37,24 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4 text-gray-200">Calculator Tools</h3>
             <ul className="space-y-2">
               <li>
-                <a href="/14-days-from-today" className="text-gray-400 hover:text-white transition-colors text-sm">
+                <Link href="/14-days-from-today" className="text-gray-400 hover:text-white transition-colors text-sm">
                   14 Days Calculator
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/30-days-from-today" className="text-gray-400 hover:text-white transition-colors text-sm">
+                <Link href="/30-days-from-today" className="text-gray-400 hover:text-white transition-colors text-sm">
                   30 Days Calculator
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/90-days-from-today" className="text-gray-400 hover:text-white transition-colors text-sm">
+                <Link href="/90-days-from-today" className="text-gray-400 hover:text-white transition-colors text-sm">
                   90 Days Calculator
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/calendar" className="text-gray-400 hover:text-white transition-colors text-sm">
+                <Link href="/calendar" className="text-gray-400 hover:text-white transition-colors text-sm">
                   2025 Calendar
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -97,19 +98,19 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4 text-gray-200">Legal & Resources</h3>
             <ul className="space-y-2">
               <li>
-                <a href="/privacy" className="text-gray-400 hover:text-white transition-colors text-sm">
+                <Link href="/privacy" className="text-gray-400 hover:text-white transition-colors text-sm">
                   Privacy Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/terms" className="text-gray-400 hover:text-white transition-colors text-sm">
+                <Link href="/terms" className="text-gray-400 hover:text-white transition-colors text-sm">
                   Terms of Service
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/contact" className="text-gray-400 hover:text-white transition-colors text-sm">
+                <Link href="/contact" className="text-gray-400 hover:text-white transition-colors text-sm">
                   Contact Us
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
